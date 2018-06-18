@@ -1,0 +1,7 @@
+server:
+  port: 8081
+  context-path: /cat
+
+cat:
+  color: yellow
+  weight: 30
