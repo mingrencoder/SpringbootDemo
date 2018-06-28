@@ -1,6 +1,5 @@
 package com.jk.domain;
 
-import static javafx.scene.input.KeyCode.T;
 /**
  * Created by jikai on 2017/11/6.
  */

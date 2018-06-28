@@ -1,8 +1,11 @@
 package com.jk.controller;
 
-import com.jk.properties.CatProperty;
+import com.jk.mapper.CarMapper;
+import com.jk.pojo.Car;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 /**
  * Created by jikai on 2017/11/5.
@@ -12,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class HelloController {
 
     @Autowired
-    private CatProperty catProperty;
+    private CarMapper carMapper;
 
     // 组合注解GetMapping
     // RequestParam 获取请求参数的数据
@@ -32,7 +35,17 @@ public class HelloController {
     @RequestMapping(value = "/say", method = RequestMethod.GET)
     public String say(){
 
-        return catProperty.getColor() + "," + catProperty.getWeight();
+        Car car = new Car();
+        car.setCarId(1);
+        car.setCarName("奔驰");
+        car.setCarType(1);
+        car.setDpratio(10.0);
+        car.setPrice(100000.0);
+        car.setRemark("123");
+        car.setCreateTime(new Date());
+        car.setUpdateTime(new Date());
+        carMapper.insertSelective(car);
+        return null;
     }
 
 }

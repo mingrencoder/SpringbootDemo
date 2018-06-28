@@ -9,7 +9,7 @@ public class Car {
 
     private Integer carType;
 
-    private Long price;
+    private Double price;
 
     private Double dpratio;
 
@@ -19,7 +19,7 @@ public class Car {
 
     private Date updateTime;
 
-    public Car(Integer carId, String carName, Integer carType, Long price, Double dpratio, String remark, Date createTime, Date updateTime) {
+    public Car(Integer carId, String carName, Integer carType, Double price, Double dpratio, String remark, Date createTime, Date updateTime) {
         this.carId = carId;
         this.carName = carName;
         this.carType = carType;
@@ -58,11 +58,11 @@ public class Car {
         this.carType = carType;
     }
 
-    public Long getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

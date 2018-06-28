@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.jk.dao.CarMapper" >
+<mapper namespace="com.jk.mapper.CarMapper" >
   <resultMap id="BaseResultMap" type="com.jk.pojo.Car" >
     <constructor >
       <idArg column="car_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="car_name" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="car_type" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="price" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="price" jdbcType="DOUBLE" javaType="java.lang.Double" />
       <arg column="dpratio" jdbcType="DOUBLE" javaType="java.lang.Double" />
       <arg column="remark" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
@@ -26,20 +26,17 @@
     delete from car
     where car_id = #{carId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.jk.pojo.Car" >
-    insert into car (car_id, car_name, car_type, 
+  <insert id="insert" parameterType="com.jk.pojo.Car"  useGeneratedKeys="true" keyProperty="car_id">
+    insert into car (car_name, car_type,
       price, dpratio, remark, 
       create_time, update_time)
-    values (#{carId,jdbcType=INTEGER}, #{carName,jdbcType=VARCHAR}, #{carType,jdbcType=INTEGER}, 
-      #{price,jdbcType=DECIMAL}, #{dpratio,jdbcType=DOUBLE}, #{remark,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+    values (#{carName,jdbcType=VARCHAR}, #{carType,jdbcType=INTEGER},
+      #{price,jdbcType=DOUBLE}, #{dpratio,jdbcType=DOUBLE}, #{remark,jdbcType=VARCHAR}, 
+      now(), now())
   </insert>
-  <insert id="insertSelective" parameterType="com.jk.pojo.Car" >
+  <insert id="insertSelective" parameterType="com.jk.pojo.Car" useGeneratedKeys="true" keyProperty="car_id" >
     insert into car
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="carId != null" >
-        car_id,
-      </if>
       <if test="carName != null" >
         car_name,
       </if>
@@ -63,9 +60,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="carId != null" >
-        #{carId,jdbcType=INTEGER},
-      </if>
       <if test="carName != null" >
         #{carName,jdbcType=VARCHAR},
       </if>
@@ -73,7 +67,7 @@
         #{carType,jdbcType=INTEGER},
       </if>
       <if test="price != null" >
-        #{price,jdbcType=DECIMAL},
+        #{price,jdbcType=DOUBLE},
       </if>
       <if test="dpratio != null" >
         #{dpratio,jdbcType=DOUBLE},
@@ -82,10 +76,10 @@
         #{remark,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+        now(),
       </if>
       <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+        now(),
       </if>
     </trim>
   </insert>
@@ -99,7 +93,7 @@
         car_type = #{carType,jdbcType=INTEGER},
       </if>
       <if test="price != null" >
-        price = #{price,jdbcType=DECIMAL},
+        price = #{price,jdbcType=DOUBLE},
       </if>
       <if test="dpratio != null" >
         dpratio = #{dpratio,jdbcType=DOUBLE},
@@ -111,7 +105,7 @@
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+        update_time = now(),
       </if>
     </set>
     where car_id = #{carId,jdbcType=INTEGER}
@@ -120,11 +114,11 @@
     update car
     set car_name = #{carName,jdbcType=VARCHAR},
       car_type = #{carType,jdbcType=INTEGER},
-      price = #{price,jdbcType=DECIMAL},
+      price = #{price,jdbcType=DOUBLE},
       dpratio = #{dpratio,jdbcType=DOUBLE},
       remark = #{remark,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
+      update_time = now()
     where car_id = #{carId,jdbcType=INTEGER}
   </update>
 </mapper>

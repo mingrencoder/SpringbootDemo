@@ -22,48 +22,48 @@ public class CatController {
      * 查找所有Cat
      * @return
      */
-    @GetMapping(value = "/catList")
-    public List<Cat> catList() {
-
-        logger.info("query cat list");
-        return null;
-    }
+//    @GetMapping(value = "/catList")
+//    public List<Cat> catList() {
+//
+//        logger.info("query cat list");
+//        return null;
+//    }
 
     /**
      * 添加Cat
      * @return
      */
-    @PostMapping(value = "/catAdd")
-    public Result<Cat> catAdd(@Valid Cat cat, BindingResult bindingResult) {
-        Result result = new Result();
-        if(bindingResult.hasErrors()) {
-            return null;
-        }
-        cat.setName(cat.getName());
-        cat.setWeight(cat.getWeight());
-
-        return null;
-    }
+//    @PostMapping(value = "/catAdd")
+//    public Result<Cat> catAdd(@Valid Cat cat, BindingResult bindingResult) {
+//        Result result = new Result();
+//        if(bindingResult.hasErrors()) {
+//            return null;
+//        }
+//        cat.setName(cat.getName());
+//        cat.setWeight(cat.getWeight());
+//
+//        return null;
+//    }
 
     /**
      * 通过ID查询
      * @param id
      * @return
      */
-    @GetMapping(value = "/query/{id}")
-    public Cat catFindOne(@PathVariable("id") Integer id) {
-        return null;
-    }
+//    @GetMapping(value = "/query/{id}")
+//    public Cat catFindOne(@PathVariable("id") Integer id) {
+//        return null;
+//    }
 
     /**
      * 通过name查询
      * @param name
      * @return
      */
-    @GetMapping(value = "/queryByName/{name}")
-    public List<Cat> catFindByName(@PathVariable("name") String name) {
-        return null;
-    }
+//    @GetMapping(value = "/queryByName/{name}")
+//    public List<Cat> catFindByName(@PathVariable("name") String name) {
+//        return null;
+//    }
 
     /**
      * 更新Cat
@@ -72,17 +72,17 @@ public class CatController {
      * @param weight
      * @return
      */
-    @PutMapping(value = "/update/{id}")
-    public Cat catUpdate(@PathVariable("id") Integer id,
-                         @RequestParam("name") String name,
-                         @RequestParam("weight") Integer weight) {
-        Cat cat = new Cat();
-        cat.setId(id);
-        cat.setName(name);
-        cat.setWeight(weight);
-
-        return null;
-    }
+//    @PutMapping(value = "/update/{id}")
+//    public Cat catUpdate(@PathVariable("id") Integer id,
+//                         @RequestParam("name") String name,
+//                         @RequestParam("weight") Integer weight) {
+//        Cat cat = new Cat();
+//        cat.setId(id);
+//        cat.setName(name);
+//        cat.setWeight(weight);
+//
+//        return null;
+//    }
 
     /**
      * 删除Cat
